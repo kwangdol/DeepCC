@@ -42,10 +42,10 @@ train_DeepCC_model <- function(trainData, trainLabels, epochs = 100, dropout = 0
     layer_gaussian_dropout(rate = dropout) %>%
     layer_dense(units = class, activation = 'softmax')
 
-
+  legacy_adam <- tf$keras$optimizers$legacy$Adam
   model %>% compile(
     loss = "categorical_crossentropy",
-    optimizer_adam(lr=0.001, beta_1=0.9, beta_2=0.999, decay = 1e-06),
+    legacy_adam(lr=0.001, beta_1=0.9, beta_2=0.999, decay = 1e-06),
     metrics = c('accuracy')
   )
 
@@ -56,10 +56,10 @@ train_DeepCC_model <- function(trainData, trainLabels, epochs = 100, dropout = 0
     view_metrics = F,
     validation_split = validation_split
   )
-
+ legacy_sgd <- tf$keras$optimizers$legacy$SGD
   model %>% compile(
     loss = "categorical_crossentropy",
-    optimizer = optimizer_sgd(lr = 1e-05, momentum = 0.9, decay = 1e-07),
+    optimizer =  legacy_sgd(lr = 1e-05, momentum = 0.9, decay = 1e-07),
     metrics = c('accuracy')
   )
 
