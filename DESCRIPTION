@@ -16,6 +16,6 @@ URL: http://github.com/CityUHK-CompBio/DeepCC
 LinkingTo: 
     Rcpp
 Imports: 
-    Rcpp, keras, doParallel, foreach, ggplot2, cowplot
+    Rcpp, keras, doParallel, foreach, ggplot2, cowplot, tensorflow
 Suggest:
     msigdbr
