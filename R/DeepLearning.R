@@ -20,7 +20,7 @@ train_DeepCC_model <- function(trainData, trainLabels, epochs = 100, dropout = 0
   class <- length(levels)
   y_train <- keras::to_categorical(as.numeric(y_train[ind]) - 1, class)
 
-  k_clear_session()
+  keras::k_clear_session()
 
   init_methods <- "glorot_uniform"
   model <- keras_model_sequential()
